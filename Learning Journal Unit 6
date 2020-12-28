@@ -1,0 +1,127 @@
+'''
+Part 1
+
+Write a Python program that does the following. 
+
+Create a string that is a long series of words separated by spaces. The string is your own creative choice. It can be names, favorite foods, animals, anything. Just make it up yourself. Do not copy the string from another source. 
+
+Turn the string into a list of words using split. 
+
+Delete three words from the list, but delete each one using a different kind of Python operation. 
+
+Sort the list. 
+
+Add new words to the list (three or more) using three different kinds of Python operation. 
+
+Turn the list of words back into a single string using join. 
+
+Print the string. 
+
+Part 2
+
+Provide your own examples of the following using Python lists. Create your own examples. Do not copy them from another source. 
+
+Nested lists 
+The “*” operator 
+List slices 
+The “+=” operator 
+A list filter 
+A list operation that is legal but does the "wrong" thing, not what the programmer expects 
+Provide the Python code and output for your program and all your examples. 
+'''
+Part 1
+s="door book desk board pen computer" #create the string
+print(s)
+l = s.split() #split the string to the list
+print(l)
+
+del l[1]
+print(l) #delete 1th
+
+l.remove('desk') #remove 'desk' element
+print(l)
+
+l.pop(0) #delete 0th pop modifies the list and returns the element was removed
+print(l)
+
+l.sort()
+print(l)
+
+l.append('laptop')
+print(l)
+
+l2=["teachers", "students"]
+l.extend(l2)
+print(l)
+
+l.insert(0,'ipads')
+print(l)
+
+s2=' '.join(l)
+print(s2)
+ output
+door book desk board pen computer
+['door', 'book', 'desk', 'board', 'pen', 'computer']
+['door', 'desk', 'board', 'pen', 'computer']
+['door', 'board', 'pen', 'computer']
+['board', 'pen', 'computer']
+['board', 'computer', 'pen']
+['board', 'computer', 'pen', 'laptop']
+['board', 'computer', 'pen', 'laptop', 'teachers', 'students']
+['ipads', 'board', 'computer', 'pen', 'laptop', 'teachers', 'students']
+ipads board computer pen laptop teachers students
+>>> 
+
+
+
+Part 2:
+''' Nested lists '''
+
+a = ['hello','world',['nest', 'lists']]
+print(a)
+'''The “*” operator '''
+
+b=a*2
+print(b)
+
+
+''' List slices '''
+
+b[1:3]
+print(b)
+
+
+'''The “+=” operator '''
+b+='THANK YOU'
+print(b)
+
+
+'''A list filter '''
+c=['HELLO','world','I', 'am','new','programmer']
+def only_normal(t):
+    res=[]
+    for s in t:
+        if s.islower(): #is.lower is a filter
+            res.append(s)
+    print(res)
+    return res
+
+only_normal(c)
+
+
+'''A list operation that is legal but does the "wrong" thing, not what the programmer expects'''
+wrong = ['this','list','will','be','apply','unexpect','operation']
+#need to add 'append' to the end of list, so wrong=['this','list','will','be','apply','unexpect','operation','append']
+wrong = a.append('append') 
+print(wrong) #but, the result is a = None
+
+
+Output:
+
+['hello', 'world', ['nest', 'lists']]
+['hello', 'world', ['nest', 'lists'], 'hello', 'world', ['nest', 'lists']]
+['hello', 'world', ['nest', 'lists'], 'hello', 'world', ['nest', 'lists']]
+['hello', 'world', ['nest', 'lists'], 'hello', 'world', ['nest', 'lists'], 'T', 'H', 'A', 'N', 'K', ' ', 'Y', 'O', 'U']
+['world', 'am', 'new', 'programmer']
+None
+>>> 
