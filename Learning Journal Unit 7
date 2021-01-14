@@ -1,0 +1,89 @@
+Create a Python dictionary that returns a list of values for each key. The key can be whatever type you want. 
+
+Design the dictionary so that it could be useful for something meaningful to you. Create at least three different items in it. Invent the dictionary yourself. Do not copy the design or items from some other source. 
+
+Next consider the invert_dict function from Section 11.5 of your textbook. 
+
+# From Section 11.5 of: 
+# Downey, A. (2015). Think Python: How to think like a computer scientist. Needham, Massachusetts: Green Tree Press. 
+
+def invert_dict(d):
+     inverse = dict()
+     for key in d:
+          val = d[key]
+          if val not in inverse:
+               inverse[val] = [key]
+          else:
+               inverse[val].append(key)
+     return inverse 
+
+Modify this function so that it can invert your dictionary. In particular, the function will need to turn each of the list items into separate keys in the inverted dictionary. 
+
+Run your modified invert_dict function on your dictionary. Print the original dictionary and the inverted one. 
+
+Include your Python program and the output in your Learning Journal submission. 
+
+Describe what is useful about your dictionary. Then describe whether the inverted dictionary is useful or meaningful, and why. 
+
+my code:
+
+d1 = {'dog':['cho','cau','tuat'],'chicken':['ga','ke','dau'],'mouse':['chuot','ti'],'cat':['meo','mao','mieu'],'litte tiger':['meo','mao','mieu']}
+
+print(d1['dog'])
+
+print(d1)
+
+output:
+
+['cho', 'cau', 'tuat']
+{'dog': ['cho', 'cau', 'tuat'], 'chicken': ['ga', 'ke', 'dau'], 'mouse': ['chuot', 'ti'], 'cat': ['meo', 'mao', 'mieu'], 'litte tiger': ['meo', 'mao', 'mieu']}
+>>> 
+
+
+
+My program:
+
+
+
+def dictionary_Viet2Eng(d):
+
+  viet2eng = dict()
+
+  for key in d:
+
+    val = d[key]
+
+    for word in val:
+
+      if word not in viet2eng: # Go inside the list since list is unhashable
+
+        viet2eng[word] = [key] # I use list because in some case, the val is similar
+
+      else:
+
+        viet2eng[word].append(key)
+
+  return viet2eng 
+
+
+
+d1 = {'dog':['cho','cau','tuat'],'chicken':['ga','ke','dau'],'mouse':['chuot','ti'],'cat':['meo','mao','mieu'],'litte tiger':['meo','mao','mieu']}
+
+
+
+print('This is original dictionary',d1)
+
+print('This is my inverted dictionary',dictionary_Viet2Eng(d1))
+
+
+
+OUTPUT:
+
+This is original dictionary {'dog': ['cho', 'cau', 'tuat'], 'chicken': ['ga', 'ke', 'dau'], 'mouse': ['chuot', 'ti'], 'cat': ['meo', 'mao', 'mieu'], 'litte tiger': ['meo', 'mao', 'mieu']}
+This is my inverted dictionary {'cho': ['dog'], 'cau': ['dog'], 'tuat': ['dog'], 'ga': ['chicken'], 'ke': ['chicken'], 'dau': ['chicken'], 'chuot': ['mouse'], 'ti': ['mouse'], 'meo': ['cat', 'litte tiger'], 'mao': ['cat', 'litte tiger'], 'mieu': ['cat', 'litte tiger']}
+>>> 
+
+Describe what is useful about your dictionary. Then describe whether the inverted dictionary is useful or meaningful, and why.
+
+My original dictionary is useful for me to store the meaning of the word in English to Vietnamese, even 1 word in English can translate more words in Vietnamese. On the other hand, my inverted dictionary helps me translate from Vietnamese to English including 1 word in Vietnamese, that has more than 1 meaning in English. Hence, It saves time for me because if I have the version of English-Vietnamese, then I have the version Vietnamese-English by using this function immediately.
+
