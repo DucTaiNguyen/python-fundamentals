@@ -1,0 +1,83 @@
+Modify your program from Learning Journal Unit 7 to read dictionary items from a file and write the inverted dictionary to a file. You will need to decide on the following:
+
+How to format each dictionary item as a text string in the input file.
+How to covert each input string into a dictionary item.
+How to format each item of your inverted dictionary as a text string in the output file.
+Create an input file with your original three-or-more items and add at least three new items, for a total of at least six items.
+
+
+Include the following in your Learning Journal submission: 
+
+The input file for your original dictionary (with at least six items).
+The Python program to read from a file, invert the dictionary, and write to a different file.
+The output file for your inverted dictionary.
+A description of how you chose to encode the original dictionary and the inverted dictionary in text files.
+
+
+
+
+The input file for your original dictionary (with at least six items).
+my_dict.txt
+
+{'dog':['cho','cau','tuat'],'chicken':['ga','ke','dau'],'mouse':['chuot','ti'],'cat':['meo','mao','mieu'],'litte tiger':['meo','mao','mieu'],'green':['mau xanh','mau luc','mau dot chuoi']}
+The Python program to read from a file, invert the dictionary, and write to a different file.
+# invert the dictionary
+def dictionary_Viet2Eng(d):
+
+  viet2eng = dict()
+
+  for key in d:
+
+    val = d[key]
+
+    for word in val:
+
+      if word not in viet2eng: # Go inside the list since list is unhashable
+
+        viet2eng[word] = [key] # I use list because in some case, the val is similar
+
+      else:
+
+        viet2eng[word].append(key)
+
+  return viet2eng 
+
+
+#read from a file
+my_dict = {}
+my_dict = eval(open("my_dict.txt").read()) # open file as dict
+#call the function to invert
+my_new_dictionary = dictionary_Viet2Eng(my_dict)
+
+#write to a different file
+with open('my_reverse_dict.txt','w') as fout:
+    fout.write(str(my_new_dictionary))
+
+
+#Create an input file with your original three-or-more items and add at least three new items,
+#  for a total of at least six items.
+
+
+my_dict2 = {}
+my_dict2 = eval(open("my_dict.txt").read()) # open file as dict
+append_dict = {'black':['den','huyen','muc'],'yellow':['vang','hoang kim'],'pink':['hong','huong'],'mouse':['chuot','ti']}
+#Create a new dict that have all dicts
+temp = {}
+temp.update(my_dict2)   
+temp.update(append_dict)
+#write the new dict to new input file
+with open('new_input_file','w') as new_input:
+    new_input.write(str(temp))
+
+
+
+The output file for your inverted dictionary.
+my_reverse_dict.txt
+
+{'cho': ['dog'], 'cau': ['dog'], 'tuat': ['dog'], 'ga': ['chicken'], 'ke': ['chicken'], 'dau': ['chicken'], 'chuot': ['mouse'], 'ti': ['mouse'], 'meo': ['cat', 'litte tiger'], 'mao': ['cat', 'litte tiger'], 'mieu': ['cat', 'litte tiger'], 'mau xanh': ['green'], 'mau luc': ['green'], 'mau dot chuoi': ['green']}
+
+
+A description of how you chose to encode the original dictionary and the inverted dictionary in text files.
+First, I open the file original dictionary as "dict", and then I use the function from week 7 to inverted that.
+After that, I open a new file to write the inverse version. The main idea is that I use the file.txt as 'dict' by opening it,
+and save the new dictionary as a file.txt using the code.
